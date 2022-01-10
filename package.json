@@ -1,0 +1,9 @@
+{
+  "name": "microservice-pharmacy",
+  "version": "0.0.0",
+  "main": "server.ts",
+  "license": "LICENSE",
+  "description": "Create microservices for pharmacy",
+  "repository": "https://github.com/Williancc1557/pharmacy-microservice",
+  "author": "Willian Cavalcanti Coelho"
+}
