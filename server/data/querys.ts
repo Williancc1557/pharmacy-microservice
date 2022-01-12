@@ -11,4 +11,6 @@ export class PharmacesData {
         responsible,
         celular,
         others }: PharmaceType) => db.query(`INSERT INTO pharmaces (logo, name, cnpj, adress, operation_hours, responsible, celular, others) VALUES ('${logo}', '${name}', ${cnpj}, '${adress}', '${operationHours}', '${responsible}', ${celular}, '${others}')`);
+
+    public getPharmaceByName = async (name: string) => db.query(`SELECT * FROM pharmaces WHERE name = '${name}'`);
 }

@@ -1,6 +1,8 @@
 import { PharmacesData } from "../data/querys";
 import type { PharmaceType } from "../types/types";
 
+const data = new PharmacesData();
+
 export class Services {
     public postPharmace = async ({
         logo,
@@ -12,6 +14,10 @@ export class Services {
         celular,
         others,
     }: PharmaceType) => {
-        new PharmacesData().pharmaceCadaster({ logo, name, cnpj, adress, operationHours, responsible, celular, others });
+        const getPharmace = await data.getPharmaceByName(name);
+        const maxFiliars = 4;
+
+        if (getPharmace.rowCount == maxFiliars) return { value: false, error: "Afiliate limit exceeded" };
+        else return data.pharmaceCadaster({ logo, name, cnpj, adress, operationHours, responsible, celular, others });
     };
 }

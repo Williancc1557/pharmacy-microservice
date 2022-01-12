@@ -19,8 +19,5 @@ export class ControllerRoutes {
         } catch (err) {
             res.json(err);
         }
-
-
-
     };
 }
