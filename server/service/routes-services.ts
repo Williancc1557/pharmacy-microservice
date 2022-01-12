@@ -18,6 +18,6 @@ export class Services {
         const maxFiliars = 4;
 
         if (getPharmace.rowCount == maxFiliars) return { value: false, error: "Afiliate limit exceeded" };
-        else return data.pharmaceCadaster({ logo, name, cnpj, adress, operationHours, responsible, celular, others });
+        return data.pharmaceCadaster({ logo, name, cnpj, adress, operationHours, responsible, celular, others });
     };
 }
