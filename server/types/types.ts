@@ -8,3 +8,14 @@ export interface PharmaceType {
     celular: number;
     others: string;
 }
+
+export interface PharmaceUpdateType {
+    logo?: string | undefined;
+    name?: string;
+    cnpj?: number;
+    adress?: string;
+    operationHours?: string;
+    responsible?: string;
+    celular?: number;
+    others?: string;
+}

@@ -5,3 +5,5 @@ export const router = Router();
 const controller = new ControllerRoutes();
 
 router.post("/cadasterpharmace", controller.postPharmaceRouter);
+
+router.post("/updatepharmace", controller.postUpdatePharmaceRouter);

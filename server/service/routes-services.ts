@@ -1,5 +1,5 @@
 import { PharmacesData } from "../data/querys";
-import type { PharmaceType } from "../types/types";
+import type { PharmaceType, PharmaceUpdateType } from "../types/types";
 
 const data = new PharmacesData();
 
@@ -20,4 +20,24 @@ export class Services {
         if (getPharmace.rowCount == maxFiliars) return { value: false, error: "Afiliate limit exceeded" };
         return data.pharmaceCadaster({ logo, name, cnpj, adress, operationHours, responsible, celular, others });
     };
+
+    public postUpdateProfile = async ({
+        logo,
+        name,
+        cnpj,
+        adress,
+        operationHours,
+        responsible,
+        celular,
+        others,
+    }: PharmaceUpdateType) => data.updatePharmace({
+        logo,
+        name,
+        cnpj,
+        adress,
+        operationHours,
+        responsible,
+        celular,
+        others,
+    });
 }

@@ -20,4 +20,22 @@ export class ControllerRoutes {
             res.json(err);
         }
     };
+
+    public postUpdatePharmaceRouter = async (req: Request, res: Response) => {
+        try {
+            const response = await services.postUpdateProfile({
+                logo: req.body.logo,
+                name: req.body.name,
+                cnpj: req.body.cnpj,
+                adress: req.body.adress,
+                operationHours: req.body.operationHours,
+                responsible: req.body.responsible,
+                celular: req.body.celular,
+                others: req.body.others,
+            });
+            res.json(response);
+        } catch (err) {
+            res.json(err);
+        }
+    };
 }
