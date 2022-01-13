@@ -23,7 +23,7 @@ export class ControllerRoutes {
 
     public postUpdatePharmaceRouter = async (req: Request, res: Response) => {
         try {
-            const response = await services.postUpdateProfile({
+            const response = await services.postUpdatePharmace({
                 logo: req.body.logo,
                 name: req.body.name,
                 cnpj: req.body.cnpj,
@@ -38,4 +38,17 @@ export class ControllerRoutes {
             res.json(err);
         }
     };
+
+    public postDeletePharmace = async (req: Request, res: Response) => {
+        const response = await services.deletePharmaceByName({
+            name: req.body.name,
+            cnpj: req.body.cnpj,
+        });
+
+        res.json(response);
+    };
+
+    public getListPharmaces = async (req: Request, res: Response) => res.json(await services.listPharmaces());
+
+    public getPharmaceByName = async (req: Request, res: Response) => res.json(await services.getPharmaceByName(req.params.name));
 }

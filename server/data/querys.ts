@@ -1,5 +1,5 @@
 import { db } from "../infra/db";
-import type { PharmaceType, PharmaceUpdateType } from "../types/types";
+import type { PharmaceType, PharmaceUpdateType, PharmaceDeleteType } from "../types/types";
 
 export class PharmacesData {
     public pharmaceCadaster = async ({
@@ -27,28 +27,48 @@ export class PharmacesData {
         const listString = ["logo", "name", "cnpj", "adress", "operation_hours", "responsible", "celular", "others"];
         let query = "UPDATE pharmaces SET ";
 
-        const listLength = Number(listValue.length);
-
-        for (let i = 0; i < listLength; i++) {
-            if (listValue[i] != "" && listValue[i]) {
-                if (typeof listValue[i] == "number") query = query + `${listString[i]} = ${listValue[i]} ,`;
-                else query = query + `${listString[i]} = '${listValue[i]}' ,`;
+        const logArrayElements = (element: number | string | undefined, index: number) => {
+            if (element != "" && element) {
+                if (typeof element == "number") query = query + `${listString[index]} = ${element} ,`;
+                else query = query + `${listString[index]} = '${element}' ,`;
             }
-        }
+        };
+
+        listValue.forEach(logArrayElements);
 
         query = query + `WHERE name = '${name}'`;
         query = query.replace(/([,])+(WHERE)/, "$2");
 
         try {
-
             return db.query(query);
-
         } catch (err) {
-
             return {
                 value: false,
                 error: err,
             };
         }
     };
+
+    public deletePharmace = async ({
+        name,
+        cnpj,
+    }: PharmaceDeleteType) => {
+        let query = `DELETE FROM pharmaces WHERE name = '${name}'`;
+
+        if (cnpj) {
+            query = query + ` AND cnpj = ${cnpj}`;
+        }
+        try {
+            return db.query(query);
+        } catch (err) {
+            return {
+                value: false,
+                error: err,
+            };
+        }
+    };
+
+    public listPharmaces = async () => db.query("SELECT * FROM pharmaces");
+
+    public getPharmaceById = async (id: number) => db.query(`SELECT * FROM pharmaces WHERE id = '${id}'`);
 }

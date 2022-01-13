@@ -1,5 +1,5 @@
 export interface PharmaceType {
-    logo?: string | undefined;
+    logo?: string;
     name: string;
     cnpj: number;
     adress: string;
@@ -10,7 +10,7 @@ export interface PharmaceType {
 }
 
 export interface PharmaceUpdateType {
-    logo?: string | undefined;
+    logo?: string;
     name?: string;
     cnpj?: number;
     adress?: string;
@@ -18,4 +18,9 @@ export interface PharmaceUpdateType {
     responsible?: string;
     celular?: number;
     others?: string;
+}
+
+export interface PharmaceDeleteType {
+    name?: string;
+    cnpj?: number;
 }

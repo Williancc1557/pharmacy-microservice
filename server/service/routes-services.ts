@@ -1,5 +1,5 @@
 import { PharmacesData } from "../data/querys";
-import type { PharmaceType, PharmaceUpdateType } from "../types/types";
+import type { PharmaceType, PharmaceUpdateType, PharmaceDeleteType } from "../types/types";
 
 const data = new PharmacesData();
 
@@ -21,7 +21,7 @@ export class Services {
         return data.pharmaceCadaster({ logo, name, cnpj, adress, operationHours, responsible, celular, others });
     };
 
-    public postUpdateProfile = async ({
+    public postUpdatePharmace = async ({
         logo,
         name,
         cnpj,
@@ -40,4 +40,22 @@ export class Services {
         celular,
         others,
     });
+
+    public deletePharmaceByName = async ({
+        name,
+        cnpj,
+    }: PharmaceDeleteType) => {
+        return data.deletePharmace({
+            name: name,
+            cnpj: cnpj,
+        });
+    };
+
+    public listPharmaces = async () => {
+        return (await data.listPharmaces()).rows;
+    };
+
+    public getPharmaceByName = async (name: string) => {
+        return data.getPharmaceByName(name);
+    };
 }
