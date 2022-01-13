@@ -7,7 +7,8 @@
   "repository": "https://github.com/Williancc1557/pharmacy-microservice",
   "author": "Willian Cavalcanti Coelho",
   "scripts": {
-    "dev": "ts-node-dev server/server.ts"
+    "dev": "ts-node-dev server/server.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
@@ -16,6 +17,7 @@
     "@types/express-rate-limit": "^6.0.0",
     "@types/morgan": "^1.9.3",
     "@types/pg": "^8.6.4",
+    "@types/supertest": "^2.0.11",
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
     "express": "^4.17.2",
@@ -30,6 +32,8 @@
     "eslint": "^8.6.0",
     "jest": "^27.4.7",
     "prettier": "^2.5.1",
+    "supertest": "^6.2.1",
+    "ts-jest": "^27.1.2",
     "typescript": "^4.5.4"
   }
 }

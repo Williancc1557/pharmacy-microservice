@@ -22,21 +22,19 @@ export class ControllerRoutes {
     };
 
     public postUpdatePharmaceRouter = async (req: Request, res: Response) => {
-        try {
-            const response = await services.postUpdatePharmace({
-                logo: req.body.logo,
-                name: req.body.name,
-                cnpj: req.body.cnpj,
-                adress: req.body.adress,
-                operationHours: req.body.operationHours,
-                responsible: req.body.responsible,
-                celular: req.body.celular,
-                others: req.body.others,
-            });
-            res.json(response);
-        } catch (err) {
-            res.json(err);
-        }
+
+        const response = await services.postUpdatePharmace({
+            logo: req.body.logo,
+            name: req.body.name,
+            cnpj: req.body.cnpj,
+            adress: req.body.adress,
+            operationHours: req.body.operationHours,
+            responsible: req.body.responsible,
+            celular: req.body.celular,
+            others: req.body.others,
+        });
+        res.json(response);
+
     };
 
     public postDeletePharmace = async (req: Request, res: Response) => {
